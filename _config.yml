@@ -1,0 +1,39 @@
+# Site Settings
+title: benni
+email: your-email@example.com
+description: >-
+  TEst
+
+# URLs
+baseurl: ""
+url: ""
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:name/
+
+# Site data
+skills: "Skill, skill, skill, skill"
+
+contact_message: "I am open to freelance opportunities and collaborations."
+
+# IMPORTANT: Exclude these directories to prevent the date error
+exclude:
+  - vendor/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - tmp/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - README.md
+  - .gitignore
