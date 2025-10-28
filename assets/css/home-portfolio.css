@@ -1,0 +1,266 @@
+/* ==================================
+   COMPLETE STANDALONE CSS
+   No variables - works immediately
+   ================================== */
+
+/* Work Section - Add spacing and container */
+.work-section {
+    margin-bottom: 60px;
+    padding: 0 20px;
+    margin-top: 40px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Portfolio Item Card - WITH ROUNDED CORNERS */
+.portfolio-item {
+    background: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Portfolio Link */
+.portfolio-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.portfolio-link:hover {
+    opacity: 1;
+}
+
+/* Portfolio Image - WITH ROUNDED TOP CORNERS */
+.portfolio-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #ffffff;
+    position: relative;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.05);
+}
+
+/* Portfolio Content - WITH PADDING */
+.portfolio-content {
+    padding: 20px;
+    background: #f8f8f8;
+}
+
+.portfolio-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    transition: color 0.3s ease;
+    line-height: 1.3;
+}
+
+.portfolio-link:hover .portfolio-title {
+    color: #333333;
+}
+
+.portfolio-description {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Portfolio Category Badge - WITH ROUNDED CORNERS */
+.portfolio-category {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 14px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.portfolio-link:hover .portfolio-category {
+    background: #333333;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+/* Skills Section - WITH SPACING */
+.skills {
+    text-align: center;
+    margin: 60px 0;
+    padding: 40px 20px;
+}
+
+.skills-text {
+    font-size: 1rem;
+    color: #666666;
+    max-width: 850px;
+    margin: 0 auto;
+    line-height: 1.9;
+}
+
+/* Contact Section - WITH SPACING */
+.contact-section {
+    text-align: center;
+    margin: 60px 0;
+    padding: 40px 20px;
+}
+
+.contact-message {
+    font-size: 1.1rem;
+    color: #666666;
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.contact-link {
+    display: inline-block;
+    padding: 14px 36px;
+    background: #333333;
+    color: #ffffff;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.contact-link:hover {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Fade-up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-item[data-aos="fade-up"] {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-item:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .work-section {
+        padding: 0 15px;
+        margin-top: 20px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .portfolio-image {
+        height: 200px;
+    }
+
+    .skills {
+        margin: 40px 0;
+        padding: 30px 15px;
+    }
+
+    .contact-section {
+        margin: 40px 0;
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-section {
+        padding: 0 10px;
+    }
+
+    .portfolio-grid {
+        gap: 15px;
+    }
+
+    .portfolio-image {
+        height: 180px;
+    }
+
+    .portfolio-content {
+        padding: 15px;
+    }
+
+    .portfolio-title {
+        font-size: 1rem;
+    }
+
+    .contact-link {
+        width: 100%;
+        max-width: 280px;
+    }
+}

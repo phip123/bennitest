@@ -1,0 +1,144 @@
+---
+layout: default
+---
+
+<article class="project-detail">
+    <!-- Back Navigation -->
+    <nav class="project-nav">
+        <a href="{{ '/' | relative_url }}" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Portfolio
+        </a>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="project-header">
+        <h1 class="project-title">{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="project-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+
+        <!-- Project Meta Information -->
+        {% if page.client or page.year or page.role or page.category %}
+        <div class="project-meta">
+            {% if page.client %}
+            <div class="meta-item">
+                <span class="meta-label">Client</span>
+                <span class="meta-value">{{ page.client }}</span>
+            </div>
+            {% endif %}
+
+            {% if page.year %}
+            <div class="meta-item">
+                <span class="meta-label">Year</span>
+                <span class="meta-value">{{ page.year }}</span>
+            </div>
+            {% endif %}
+
+            {% if page.role %}
+            <div class="meta-item">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">{{ page.role }}</span>
+            </div>
+            {% endif %}
+
+            {% if page.category %}
+            <div class="meta-item">
+                <span class="meta-label">Category</span>
+                <span class="meta-value">{{ page.category }}</span>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </header>
+
+    <!-- Featured Image/Video -->
+    {% if page.featured_image %}
+    <div class="project-featured">
+        <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}" loading="eager">
+    </div>
+    {% elsif page.featured_video %}
+    <div class="project-featured project-video">
+        <div class="video-wrapper">
+            {% if page.featured_video contains 'youtube.com' or page.featured_video contains 'youtu.be' %}
+                <iframe src="{{ page.featured_video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% elsif page.featured_video contains 'vimeo.com' %}
+                <iframe src="{{ page.featured_video }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            {% else %}
+                <video controls>
+                    <source src="{{ page.featured_video | relative_url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Project Description -->
+    <div class="project-content">
+        {{ content }}
+    </div>
+
+    <!-- Image Gallery -->
+    {% if page.gallery %}
+    <section class="project-section">
+        <h2 class="section-heading">Gallery</h2>
+        <div class="project-gallery">
+            {% for image in page.gallery %}
+            <div class="gallery-item">
+                <img src="{{ image | relative_url }}" alt="{{ page.title }} - Gallery Image" loading="lazy">
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Technologies/Tools Used -->
+    {% if page.tools %}
+    <section class="project-section">
+        <h2 class="section-heading">Tools & Technologies</h2>
+        <div class="tools-list">
+            {% for tool in page.tools %}
+            <span class="tool-item">{{ tool }}</span>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- External Link -->
+    {% if page.external_url %}
+    <div class="project-link-section">
+        <a href="{{ page.external_url }}" target="_blank" rel="noopener" class="project-external-link">
+            View Live Project
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+            </svg>
+        </a>
+    </div>
+    {% endif %}
+
+    <!-- Project Footer Navigation -->
+    {% if page.previous or page.next %}
+    <footer class="project-footer">
+        <div class="project-pagination">
+            {% if page.previous %}
+            <a href="{{ page.previous.url | relative_url }}" class="pagination-link prev-link">
+                <span class="pagination-label">← Previous</span>
+                <span class="pagination-title">{{ page.previous.title }}</span>
+            </a>
+            {% else %}
+            <div></div>
+            {% endif %}
+
+            {% if page.next %}
+            <a href="{{ page.next.url | relative_url }}" class="pagination-link next-link">
+                <span class="pagination-label">Next →</span>
+                <span class="pagination-title">{{ page.next.title }}</span>
+            </a>
+            {% endif %}
+        </div>
+    </footer>
+    {% endif %}
+</article>

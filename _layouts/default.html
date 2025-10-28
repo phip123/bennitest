@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/home-portfolio.css' | relative_url }}">
+<!--    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">-->
+    <link rel="stylesheet" href="{{ '/assets/css/project-detail.css' | relative_url }}">
+    <!-- Hero Gallery CSS (for home page) -->
+    {% if page.layout == 'home' %}
+    <link rel="stylesheet" href="{{ '/assets/css/hero-gallery.css' | relative_url }}">
+    {% endif %}
+    <!-- Project Detail CSS -->
+    {% if page.layout == 'project' %}
+    <link rel="stylesheet" href="{{ '/assets/css/project-detail.css' | relative_url }}">
+    {% endif %}
     {% seo %}
 </head>
 <body>
@@ -22,5 +33,13 @@
         <p>© {{ 'now' | date: "%Y" }} {{ site.title }}</p>
     </footer>
 </div>
+</body>
+</html>
+
+
+<!-- Hero Gallery JavaScript (for home page) -->
+{% if page.layout == 'home' %}
+<script src="{{ '/assets/js/hero-gallery.js' | relative_url }}"></script>
+{% endif %}
 </body>
 </html>
