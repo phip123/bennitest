@@ -9,7 +9,7 @@ title: Work
 {% for item in site.portfolio %}
   <div class="work-item">
     {% if item.image %}
-    <img src="{{ item.image }}" alt="{{ item.title }}">
+    <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
     {% endif %}
     <div class="work-item-content">
       <h3>{{ item.title }}</h3>
