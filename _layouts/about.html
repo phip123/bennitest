@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<div class="site-container">
+    <article class="page-content about-page">
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1 class="page-title">{{ page.title }}</h1>
+            {% if page.subtitle %}
+            <p class="page-subtitle">{{ page.subtitle }}</p>
+            {% endif %}
+        </header>
+
+        <!-- About Content -->
+        <div class="about-content">
+            {{ content }}
+        </div>
+
+        {% if page.skills %}
+        <!-- Skills Section -->
+        <section class="about-skills">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                {% for skill in page.skills %}
+                <div class="skill-item">{{ skill }}</div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if page.experience %}
+        <!-- Experience Section -->
+        <section class="about-experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-list">
+                {% for item in page.experience %}
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">{{ item.title }}</h3>
+                        <span class="experience-company">{{ item.company }}</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-period">{{ item.period }}</span>
+                    </div>
+                    {% if item.description %}
+                    <p class="experience-description">{{ item.description }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- CTA Section -->
+        <section class="about-cta">
+            <h2 class="cta-title">Let's Work Together</h2>
+            <p class="cta-text">Interested in collaborating? Get in touch and let's create something amazing.</p>
+            <a href="{{ '/contact' | relative_url }}" class="cta-button">Contact Me</a>
+        </section>
+    </article>
+</div>

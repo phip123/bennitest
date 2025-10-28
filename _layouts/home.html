@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<!-- Hero Rotating Gallery Section -->
+<!-- Hero Gallery Section with Angular Cut -->
 <section class="hero-gallery">
     <div class="hero-slider">
         <div class="hero-slides">
@@ -52,12 +52,12 @@ layout: default
 
         <!-- Navigation Arrows -->
         <button class="hero-nav hero-prev" aria-label="Previous slide">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                 <path d="M15 18l-6-6 6-6"/>
             </svg>
         </button>
         <button class="hero-nav hero-next" aria-label="Next slide">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                 <path d="M9 18l6-6-6-6"/>
             </svg>
         </button>
@@ -67,44 +67,28 @@ layout: default
     </div>
 </section>
 
-<!-- Portfolio Grid Section -->
-<section class="work-section">
-    <h2 class="section-title">SELECTED WORK</h2>
+<!-- Portfolio Grid -->
+<section class="portfolio-section" id="portfolio">
+    <div class="site-container">
+        <h2 class="section-title">Selected Work</h2>
 
-    <div class="portfolio-grid">
-        {% assign sorted_portfolio = site.portfolio | sort: 'order' %}
-        {% for item in sorted_portfolio %}
-        <article class="portfolio-item">
-            <a href="{{ item.url | relative_url }}" class="portfolio-link">
-                {% if item.image %}
-                <div class="portfolio-image">
-                    <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy">
-                </div>
-                {% endif %}
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">{{ item.title }}</h3>
-                    {% if item.description %}
-                    <p class="portfolio-description">{{ item.description }}</p>
+        <div class="portfolio-grid">
+            {% assign sorted_portfolio = site.portfolio | sort: 'order' %}
+            {% for project in sorted_portfolio %}
+            <article class="portfolio-card">
+                <a href="{{ project.url | relative_url }}" class="portfolio-card-link">
+                    {% if project.image %}
+                    <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" class="portfolio-image">
                     {% endif %}
-                    {% if item.category %}
-                    <span class="portfolio-category">{{ item.category }}</span>
-                    {% endif %}
-                </div>
-            </a>
-        </article>
-        {% endfor %}
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">{{ project.title }}</h3>
+                        {% if project.category %}
+                        <p class="portfolio-category">{{ project.category }}</p>
+                        {% endif %}
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
     </div>
-
-    <!-- Skills Section -->
-    <div class="skills">
-        <p class="skills-text">{{ site.skills }}</p>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="contact-section">
-    <p class="contact-message">{{ site.contact_message }}</p>
-    {% if site.social.email %}
-    <a href="mailto:{{ site.social.email }}" class="contact-link">Get in Touch</a>
-    {% endif %}
 </section>

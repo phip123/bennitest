@@ -1,45 +1,547 @@
-* {
+/* ==================================
+   GEOMETRIC PORTFOLIO THEME
+   Inspired by bold angular logo
+   ================================== */
+
+/* CSS Variables */
+:root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray-light: #f5f5f5;
+    --color-gray: #cccccc;
+    --color-gray-dark: #333333;
+
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-display: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+
+    --spacing-xs: 10px;
+    --spacing-sm: 20px;
+    --spacing-md: 40px;
+    --spacing-lg: 60px;
+    --spacing-xl: 80px;
+
+    --transition: 0.3s ease;
+}
+
+/* Reset */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-family: var(--font-primary);
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
-    min-height: 100vh;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
 }
 
-
-:root {
-    --color-text-primary: #1a1a1a;      /* Main text color */
-    --color-text-secondary: #666666;     /* Secondary text */
-    --color-background: #ffffff;         /* Background color */
-    --color-background-light: #f8f8f8;   /* Card backgrounds */
-    --color-accent: #333333;             /* Accent color */
-}
-
-/* Make entire portfolio card clickable */
-.portfolio-link {
+img {
+    max-width: 100%;
+    height: auto;
     display: block;
-    text-decoration: none;
+}
+
+a {
     color: inherit;
-    height: 100%;
+    text-decoration: none;
 }
 
-.portfolio-link:hover {
-    opacity: 1; /* Override default link hover */
+/* ==================================
+   LAYOUT
+   ================================== */
+
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Update title hover effect */
-.portfolio-link .portfolio-title {
-    transition: color 0.3s ease;
+.site-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    width: 100%;
 }
 
-.portfolio-link:hover .portfolio-title {
-    color: var(--color-accent);
+/* ==================================
+   HEADER - GEOMETRIC STYLE
+   ================================== */
+
+.site-header {
+    padding: var(--spacing-md) 0;
+    border-bottom: 3px solid var(--color-black);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-image {
+    width: 60px;
+    height: auto;
+}
+
+.site-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.site-nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+    list-style: none;
+}
+
+.site-nav a {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding: 8px 0;
+    border-bottom: 3px solid transparent;
+    transition: border-color var(--transition);
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+    border-bottom-color: var(--color-black);
+}
+
+/* ==================================
+   HERO SECTION - BOLD & GEOMETRIC
+   ================================== */
+
+.hero-section {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, var(--color-white) 0%, var(--color-gray-light) 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--color-gray-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-cta {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    transition: all var(--transition);
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================================
+   PORTFOLIO GRID - ANGULAR CARDS
+   ================================== */
+
+.portfolio-section {
+    padding: var(--spacing-lg) 0;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--color-black);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.portfolio-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-black);
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    transition: transform var(--transition);
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+}
+
+.portfolio-card-link {
+    display: block;
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: all var(--transition);
+}
+
+.portfolio-card:hover .portfolio-image {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.portfolio-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-sm);
+    background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+    color: var(--color-white);
+}
+
+.portfolio-title {
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+}
+
+.portfolio-category {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* ==================================
+   PROJECT DETAIL - CLEAN & ANGULAR
+   ================================== */
+
+.project-detail {
+    padding: var(--spacing-lg) 0;
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-gray-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.project-meta {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    text-align: center;
+    padding: var(--spacing-sm);
+    background: var(--color-gray-light);
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    min-width: 120px;
+}
+
+.meta-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-gray-dark);
+    font-weight: 700;
+}
+
+.meta-value {
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+.project-featured {
+    margin-bottom: var(--spacing-lg);
+    clip-path: polygon(0 0, 100% 0, 100% 98%, 0 100%);
+    overflow: hidden;
+}
+
+.project-featured img {
+    width: 100%;
+    height: auto;
+}
+
+.project-content {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-lg);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.project-content h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.gallery-item {
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.tools-section {
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+}
+
+.tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: var(--spacing-sm);
+}
+
+.tool-tag {
+    padding: 10px 25px;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+}
+
+.project-cta {
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 18px 50px;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+    transition: all var(--transition);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Back Link */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+    padding: 10px 20px;
+    background: var(--color-gray-light);
+    transition: all var(--transition);
+}
+
+.back-link:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+/* Project Navigation */
+.project-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 3px solid var(--color-black);
+}
+
+.nav-link {
+    padding: var(--spacing-sm);
+    background: var(--color-gray-light);
+    clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+    transition: all var(--transition);
+    text-align: center;
+}
+
+.nav-link:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+.nav-title {
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+/* ==================================
+   FOOTER
+   ================================== */
+
+.site-footer {
+    margin-top: auto;
+    padding: var(--spacing-md) 0;
+    border-top: 3px solid var(--color-black);
+    background: var(--color-gray-light);
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-text {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+/* ==================================
+   RESPONSIVE
+   ================================== */
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .site-nav ul {
+        gap: var(--spacing-sm);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-title {
+        font-size: 2rem;
+    }
+
+    .project-nav {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .site-container {
+        padding: 0 var(--spacing-sm);
+    }
 }
 
 /* ==================================
@@ -316,4 +818,3 @@ body {
 .hero-slider.paused .hero-slide {
     animation-play-state: paused;
 }
-

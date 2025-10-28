@@ -1,20 +1,20 @@
-// Hero Gallery Rotating Slider
+// Hero Gallery Rotating Slider - Geometric Theme
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.hero-slider');
-    if (!slider) return; // Exit if no hero slider on page
+    if (!slider) return;
 
     const slides = slider.querySelectorAll('.hero-slide');
     const prevBtn = slider.querySelector('.hero-prev');
     const nextBtn = slider.querySelector('.hero-next');
     const dotsContainer = slider.querySelector('.hero-dots');
 
-    if (slides.length === 0) return; // Exit if no slides
+    if (slides.length === 0) return;
 
     let currentSlide = 0;
     let autoplayInterval;
-    const autoplayDelay = 5000; // 5 seconds
+    const autoplayDelay = 5000;
 
-    // Create dots
+    // Create geometric dots
     function createDots() {
         slides.forEach((_, index) => {
             const dot = document.createElement('button');
@@ -28,12 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Show slide
     function showSlide(index) {
-        // Remove active class from all slides and dots
         slides.forEach(slide => slide.classList.remove('active'));
         const dots = dotsContainer.querySelectorAll('.hero-dot');
         dots.forEach(dot => dot.classList.remove('active'));
 
-        // Add active class to current slide and dot
         slides[index].classList.add('active');
         if (dots[index]) {
             dots[index].classList.add('active');
@@ -136,10 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (Math.abs(diff) > swipeThreshold) {
             if (diff > 0) {
-                // Swipe left - next slide
                 nextSlide();
             } else {
-                // Swipe right - prev slide
                 prevSlide();
             }
             resetAutoplay();

@@ -3,43 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: site.title }}</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/home-portfolio.css' | relative_url }}">
-<!--    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">-->
-    <link rel="stylesheet" href="{{ '/assets/css/project-detail.css' | relative_url }}">
+
     <!-- Hero Gallery CSS (for home page) -->
     {% if page.layout == 'home' %}
     <link rel="stylesheet" href="{{ '/assets/css/hero-gallery.css' | relative_url }}">
     {% endif %}
-    <!-- Project Detail CSS -->
+
     {% if page.layout == 'project' %}
     <link rel="stylesheet" href="{{ '/assets/css/project-detail.css' | relative_url }}">
     {% endif %}
-    {% seo %}
+
+
+    {% if page.layout == 'contact' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages.css' | relative_url }}">
+    {% endif %}
+
+    {% if page.layout == 'about' %}
+    <link rel="stylesheet" href="{{ '/assets/css/pages.css' | relative_url }}">
+    {% endif %}
+
+
 </head>
 <body>
-<div class="container">
-    <header class="header">
-        <h1 class="main-title">{{ site.title }}</h1>
-        <p class="subtitle">{{ site.description }}</p>
-    </header>
+    <div class="site-wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="site-container">
+                <div class="header-content">
+                    <a href="{{ '/' | relative_url }}" class="site-logo">
+                        <img src="{{ '/assets/images/logo_small.jpg' | relative_url }}" alt="Logo" class="logo-image">
+                        <span class="site-title">{{ site.title }}</span>
+                    </a>
 
-    <main>
-        {{ content }}
-    </main>
+                    <nav class="site-nav">
+                        <ul>
+                            <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+                            <li><a href="{{ '/about' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a></li>
+                            <li><a href="{{ '/contact' | relative_url }}" {% if page.url == '/contact/' %}class="active"{% endif %}>Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
 
-    <footer class="footer">
-        <p>© {{ 'now' | date: "%Y" }} {{ site.title }}</p>
-    </footer>
-</div>
-</body>
-</html>
+        <!-- Main Content -->
+        <main class="site-content">
+            {{ content }}
+        </main>
 
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="site-container">
+                <div class="footer-content">
+                    <p class="footer-text">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
-<!-- Hero Gallery JavaScript (for home page) -->
-{% if page.layout == 'home' %}
-<script src="{{ '/assets/js/hero-gallery.js' | relative_url }}"></script>
-{% endif %}
+    <!-- Hero Gallery JavaScript (for home page) -->
+    {% if page.layout == 'home' %}
+    <script src="{{ '/assets/js/hero-gallery.js' | relative_url }}"></script>
+    {% endif %}
+
+    {% if page.layout == 'project' %}
+    <script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
+    {% endif %}
+
 </body>
 </html>
