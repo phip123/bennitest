@@ -20,7 +20,7 @@ title: Work
 </div>
 
 <div class="skills">
-  <p>Motion Design, Illustration, Art Direction, Kinetic Typography, Explainer Videos, Music Videos, 2D + 3D Animation, Social Media Content, Logo Animation, Concept Visualization</p>
+  <p>Skill, Skill, Skill</p>
 </div>
 
 <section class="contact-section">
