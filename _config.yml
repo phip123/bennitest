@@ -5,8 +5,8 @@ description: >-
   TEst
 
 # URLs
-baseurl: /PROJECT
-url: https://phip123.github.io/bennitest/
+baseurl: /bennitest
+url: https://phip123.github.io
 
 # Build settings
 plugins:
