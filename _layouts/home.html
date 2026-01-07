@@ -6,6 +6,7 @@ layout: default
 <section class="hero-gallery">
     <div class="hero-slider">
         <div class="hero-slides">
+            <h1>Test</h1>
             {% assign featured_items = site.portfolio | where: "featured", true | sort: 'order' %}
             {% if featured_items.size > 0 %}
             {% for item in featured_items limit: 5 %}
